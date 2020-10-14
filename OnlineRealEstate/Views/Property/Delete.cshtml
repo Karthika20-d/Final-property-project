@@ -1,0 +1,60 @@
+﻿@model OnlineRealEstate.Models.PropertyModel
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .table {
+            border-spacing: 10px;
+            padding: 10px;
+        }
+    </style>
+    <title>DisplayPropertyDetails</title>
+</head>
+<body>
+    @using (Html.BeginForm("Delete", "Property", FormMethod.Post))
+    {
+    @Html.HiddenFor(Model => Model.PropertyId)
+    <table>
+        <tr>
+            <td>Land Area</td>
+            <td>
+                @Html.ValueFor(Model => Model.Area)
+            </td>
+        </tr>
+        <tr>
+            <td>Property type</td>
+            <td>
+                @Html.ValueFor(Model => Model.PropertyTypeID)
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                @Html.ValueFor(Model => Model.Price)
+            </td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>
+                @Html.ValueFor(Model => Model.Location)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Are you sure you want to delete this?
+                <input type="submit" value="Delete" />
+                @Html.ActionLink("Cancel", "DisplayPropertyDetails")
+            </td>
+        </tr>
+
+    </table>
+    }
+
+
+</body>
+</html>

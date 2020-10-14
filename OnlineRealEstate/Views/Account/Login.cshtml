@@ -1,0 +1,60 @@
+﻿@model OnlineRealEstate.Models.LoginModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div style="padding-top:50px;">
+        @Html.ValidationSummary(true)
+        @if (ViewBag.Message != null)
+        {
+            Response.Write(ViewBag.Message);
+
+        }
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+             <table align="center" cellspacing="10" cellpadding="10" style="font-family:Calibri;color:black;box-sizing: border-box;background-color:white;">
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Email)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { style = "border-radius:5px;padding:5px", @maxlength = "30" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Password)
+
+                    </td>
+                    <td>
+                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { style = "border-radius:5px;padding:5px", @maxlength = "20" })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Back", "Search","Home")
+                    </td>
+                    <td>
+                        <input type="submit" id="login" value="Login" style="color:white;background-color:lightseagreen;padding:10px;border-radius:15px;font-size:17px;" />
+                    </td>
+                    <td>
+                        <a href="~/Views/Account/SignUp.cshtml">Didn't have an account click here</a>
+                    </td>
+                </tr>
+               
+            </table>
+        }
+    </div>
+    <script>
+
+    </script>
+
+</body>
+</html>

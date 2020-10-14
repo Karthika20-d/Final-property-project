@@ -1,0 +1,98 @@
+﻿@model OnlineRealEstate.Models.EditModel
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <style>
+        #table {
+            border-spacing: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+            <h1>Edit Your Details</h1>
+        @using (Html.BeginForm("Edit", "Property", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+           @Html.HiddenFor(Model => Model.PropertyModel.PropertyId)
+    <table border="1" class="table">
+        <tr>
+            <td>Land Area</td>
+            <td>
+                @Html.EditorFor(Model => Model.PropertyModel.Area)
+            </td>
+        </tr>
+        <tr>
+            <td>Property type</td>
+            <td>
+                @Html.DropDownListFor(Model => Model.PropertyModel.PropertyTypeID, ViewBag.propertyId as SelectList)
+                @Html.ValidationMessageFor(model => model.PropertyModel.PropertyTypeID)
+            </td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>
+                @Html.EditorFor(Model => Model.PropertyModel.Location)
+                @Html.ValidationMessageFor(model => model.PropertyModel.Location)
+            </td>
+        </tr>
+        <tr>
+        @{
+            byte[] imageByte = Model.PropertyModel.Image;
+            string image = Convert.ToBase64String(imageByte);
+            string imageSource = String.Format("data:image/gif;base64,{0}", image);
+        }
+            <td>Do you want to upload a new image?</td>
+        <td> <img src='@imageSource' style="width:300px; height:300px;" /></td></tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.PropertyModel.Image)
+            </td>
+            <td>
+                <input type="file" name="imageFile" />
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                @Html.EditorFor(Model => Model.PropertyModel.Price)
+                @Html.ValidationMessageFor(Model => Model.PropertyModel.Price)
+            </td>
+        </tr>
+
+        @for (int item = 0; item < Model.FeatureValues.Count; item++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(Model => Model.PropertyFeatures[item])
+
+                </td>
+                <td>
+
+                    @Html.EditorFor(Model => Model.FeatureValues[item])
+
+
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <td>
+                @Html.ActionLink("Cancel", "DisplayPropertyDetails")
+            </td>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+
+    </table>
+        }
+
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+     <link rel="stylesheet" type="text/css" href="~/Styles/Master.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="header">
+        <img src="~/Images/Logo final image1.png" />    Online Property Management System
+    </div>
+    <div class="navigation_bar">
+
+        @Html.ActionLink("Home", "Search", "Home", null, new { @class = "link" })
+
+        @Html.ActionLink("SignUp", "SignUp", "Account", null, new { @class = "link" })
+
+        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("DisplayAdmin", "DisplayPropertyDetails", "Property", null, new { @class = "link" })
+
+            }
+            if (HttpContext.Current.User.IsInRole("Buyer"))
+            {
+
+                @Html.ActionLink("Display", "DisplayBuyerPropertyDetails", "Home", null, new { @class = "link" })
+            }
+
+            @Html.ActionLink("Logout", "LogOff", "Account", null, new { @class = "link" })
+        }
+        else
+        {
+            @Html.ActionLink("SignIn", "Login", "Account", null, new { @class = "link" })
+            @Html.ActionLink("Post Property", "Create", "Property", null, new { @class = "link" })
+        }
+    </div>
+         
+           
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿body {
+}
+table {
+    font-family: Calibri;
+    color: black;
+    box-sizing: border-box;
+    background-color: white;
+}
+.textbox {
+    border-radius: 5px;
+    padding: 5px;
+}
+.dropdown {
+    border-radius: 30px;
+    padding: 5px;
+    width: 90%;
+    font-size: 15px;
+}
+.button {
+    color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 17px;
+    background-color:lightseagreen;
+    color:white;s
+}

@@ -1,0 +1,32 @@
+﻿@model OnlineRealEstate.Models.PropertyModel
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/Search.css" />
+    <title>Search</title>
+</head>
+<body>
+    <div class="split-top">
+        @if (ViewBag.Message != null)
+        {
+            Response.Write(ViewBag.Message);
+
+        }
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+        {
+        <div class="dropdown">
+            @Html.DropDownListFor(Model => Model.PropertyTypeID, (IEnumerable<SelectListItem>)ViewBag.propertyType, "Select Property Type", htmlAttributes: new { style = "border-radius:50px;padding:18px;width:30%;font-size: 14px;" })
+            @Html.DropDownListFor(Model => Model.Location, (IEnumerable<SelectListItem>)ViewBag.location,"Select Location", htmlAttributes: new { style = "border-radius:50px;padding:18px;width:30%;font-size: 14px;" })
+            <input type="submit" id="=submit" value="Search"  style="color:white;background-color:lightseagreen;padding:15px;border-radius:50px;width:15%;font-size: 20px;" />
+        </div>
+        }
+    </div>
+    <div class="split-bottom">
+
+    </div>
+</body>
+</html>

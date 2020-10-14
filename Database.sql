@@ -1,0 +1,1 @@
+insert into Users values('karthika@gmail.com','Karthika',8778315675,'Karthika@20','Admin',1,null)
