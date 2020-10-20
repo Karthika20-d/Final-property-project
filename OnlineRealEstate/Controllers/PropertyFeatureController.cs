@@ -9,14 +9,14 @@ namespace OnlineRealEstate.Controllers
     {
         // GET: PropertyFeature
         PropertyBL propertyBL = new PropertyBL();
-        public ActionResult AddFeature()
+        public ActionResult AddFeature(int propertyId,int propertyTypeId)
         {
-            Property property = TempData["TypeId"] as Property;
-            List<PropertyFeature> propertyFeatures = propertyBL.GetFeature(property.PropertyTypeID);
+            //Property property = TempData["TypeId"] as Property;
+            List<PropertyFeature> propertyFeatures = propertyBL.GetFeature(propertyTypeId);
             //ArrayList featureId = new ArrayList();
             PropertyFeatureModel model = new PropertyFeatureModel();
             ViewBag.propertyFeature = propertyFeatures;
-            model.PropertyId = property.PropertyId;
+            model.PropertyId = propertyId;
             return this.View(model);
         }
         // [HttpPost]

@@ -72,5 +72,24 @@ namespace OnlineRealEstate.BL
         {
             return propertyRepositary.GetPropertyFeatureDetails(propertyTypeId);
         }
+
+
+        //buyer
+        public int Create(BuyerProperty buyerProperty)
+        {
+            return propertyRepositary.Create(buyerProperty);
+        }
+        public IEnumerable<BuyerProperty> DisplayBuyerPropertyDetails()
+        {
+            return propertyRepositary.DisplayBuyerPropertyDetails();
+        }
+        public BuyerProperty DisplayBuyerPropertyByID(int id)
+        {
+            return propertyRepositary.DisplayBuyerPropertyByID(id);
+        }
+        public void AcceptRequest(BuyerProperty property)
+        {
+            propertyRepositary.AcceptRequest(property);
+        }
     }
 }

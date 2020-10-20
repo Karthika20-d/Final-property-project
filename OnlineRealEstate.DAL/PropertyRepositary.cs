@@ -174,6 +174,50 @@ namespace OnlineRealEstate.DAL
             }
         }
 
+
+        //buyer
+        public int Create(BuyerProperty buyerProperty)
+        {
+            using (PropertyContext propertyContext = new PropertyContext())
+            {
+                propertyContext.BuyerProperty.Add(buyerProperty);
+                return propertyContext.SaveChanges();
+            }
+
+        }
+        public IEnumerable<BuyerProperty> DisplayBuyerPropertyDetails()
+        {
+            using (PropertyContext propertyContext = new PropertyContext())
+            {
+                return propertyContext.BuyerProperty.Include("PropertyType").ToList();
+            }
+        }
+        public BuyerProperty DisplayBuyerPropertyByID(int id)
+        {
+            using(PropertyContext propertyContext=new PropertyContext())
+            {
+                BuyerProperty buyerProperty = propertyContext.BuyerProperty.Find(id);
+                return buyerProperty;
+            }
+        }
+        public void AcceptRequest(BuyerProperty buyerProperty)
+        {
+            buyerProperty.Status = "Accept";
+            Property property = new Property();
+            property.PropertyId = buyerProperty.PropertyId;
+            property.PropertyTypeID = buyerProperty.PropertyTypeID;
+            property.UserId = buyerProperty.UserId;
+            property.Image = buyerProperty.Image;
+            property.Location = buyerProperty.Location;
+            property.Price = buyerProperty.Price;
+            property.Area = buyerProperty.Area;
+            using (PropertyContext propertyContext = new PropertyContext())
+            {
+                propertyContext.Property.Add(property);
+                propertyContext.SaveChanges();
+            }
+        }
+
     }
 }
 

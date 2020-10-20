@@ -1,0 +1,74 @@
+﻿@model OnlineRealEstate.Models.BuyerPropertyModel
+<!DOCTYPE html>
+
+
+<body>
+    <div>
+        @if (ViewBag.Message != null)
+        {
+            Response.Write(ViewBag.Message);
+
+        }
+        @using (Html.BeginForm("Create", "Buyer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Area)
+                    <td>
+                        @Html.TextBoxFor(Model => Model.Area)
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.PropertyTypeID)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(Model => Model.PropertyTypeID, (IEnumerable<SelectListItem>)ViewBag.propertyId)
+                        @Html.ValidationMessageFor(model => model.PropertyTypeID)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Location)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.Location)
+                        @Html.ValidationMessageFor(model => model.Location)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Price)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.Price)
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(Model => Model.Image)
+                    </td>
+                    <td>
+                        <input type="file" name="fileBase" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Back", "DisplayPropertyDetails")
+                    </td>
+                    <td>
+                        <input type="submit" id="=submit" />
+                    </td>
+                </tr>
+            </table>
+        }
+
+    </div>
+</body>
+

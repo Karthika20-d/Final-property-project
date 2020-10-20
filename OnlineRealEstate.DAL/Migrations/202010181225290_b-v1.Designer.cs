@@ -7,13 +7,13 @@ namespace OnlineRealEstate.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class userv1 : IMigrationMetadata
+    public sealed partial class bv1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(userv1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(bv1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008240233520_user-v1"; }
+            get { return "202010181225290_b-v1"; }
         }
         
         string IMigrationMetadata.Source

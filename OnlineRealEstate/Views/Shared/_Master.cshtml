@@ -20,14 +20,21 @@
         {
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
-                @Html.ActionLink("DisplayAdmin", "DisplayPropertyDetails", "Property", null, new { @class = "link" })
+                @Html.ActionLink("DisplayAdmin", "DisplayPropertyDetails", "Property", null, new  { @class = "link" })
 
             }
             if (HttpContext.Current.User.IsInRole("Buyer"))
             {
-
-                @Html.ActionLink("Display", "DisplayBuyerPropertyDetails", "Home", null, new { @class = "link" })
+                @Html.ActionLink("Post property","Create","Buyer",null,new { @class = "link" })
+                @Html.ActionLink("Property Status", "PropertyStatus", "Buyer", null, new { @class="link"})
+               
+                
             }
+            if(HttpContext.Current.User.IsInRole("Seller"))
+            {
+               
+            }
+
 
             @Html.ActionLink("Logout", "LogOff", "Account", null, new { @class = "link" })
         }

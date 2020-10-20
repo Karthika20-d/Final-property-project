@@ -26,35 +26,35 @@ namespace OnlineRealEstate.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(PropertyModel propertyModel,HttpPostedFileBase fileBase )
-        {
-            IEnumerable<PropertyType> propertyTypes = propertyBL.GetPropertyType();
-            ViewBag.propertyId = new SelectList(propertyTypes, "PropertyTypeID", "Type");
-            Property property = new Property();
-            if (fileBase != null && fileBase.ContentLength > 0)
-            {
+        //public ActionResult Create(PropertyModel propertyModel,HttpPostedFileBase fileBase )
+        //{
+        //    IEnumerable<PropertyType> propertyTypes = propertyBL.GetPropertyType();
+        //    ViewBag.propertyId = new SelectList(propertyTypes, "PropertyTypeID", "Type");
+        //    Property property = new Property();
+        //    if (fileBase != null && fileBase.ContentLength > 0)
+        //    {
              
-                var fileName = Path.GetFileName(fileBase.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
-                fileBase.SaveAs(path);
-            }
-            if (ModelState.IsValid)
-            {
-                propertyModel.Image = new byte[fileBase.ContentLength];
-                fileBase.InputStream.Read(propertyModel.Image, 0, fileBase.ContentLength);
-                property = AutoMapper.Mapper.Map<PropertyModel, Property>(propertyModel);
-                if (propertyBL.Create(property) > 0)
-                {
-                    TempData["TypeId"] = property;
-                    return RedirectToAction("AddFeature", "PropertyFeature");
-                }
-                else
-                {
-                    ViewBag.Message = "failed";
-                }
-            }
-            return View();
-        }
+        //        var fileName = Path.GetFileName(fileBase.FileName);
+        //        var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+        //        fileBase.SaveAs(path);
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        propertyModel.Image = new byte[fileBase.ContentLength];
+        //        fileBase.InputStream.Read(propertyModel.Image, 0, fileBase.ContentLength);
+        //        property = AutoMapper.Mapper.Map<PropertyModel, Property>(propertyModel);
+        //        if (propertyBL.Create(property) > 0)
+        //        {
+        //            TempData["TypeId"] = property;
+        //            return RedirectToAction("AddFeature", "PropertyFeature");
+        //        }
+        //        else
+        //        {
+        //            ViewBag.Message = "failed";
+        //        }
+        //    }
+        //    return View();
+        //}
         public List<int> GetFeatureValues(int id)
         {
             Dictionary<int, int> PropertyValues = propertyBL.EditPropertyValues(id);
@@ -140,5 +140,20 @@ namespace OnlineRealEstate.Controllers
             return RedirectToAction("DisplayPropertyDetails");
         }
 
+
+        //Buyer
+        public ActionResult DisplayBuyerProperty()
+        {
+            IEnumerable<BuyerProperty> property = propertyBL.DisplayBuyerPropertyDetails();
+            TempData["Property"] = property;
+            return View();
+        }
+        public ActionResult AcceptProperty(int id)
+        {
+            BuyerProperty property = propertyBL.DisplayBuyerPropertyByID(id);
+            propertyBL.AcceptRequest(property);
+            return View();
+
+        }
     }
 }

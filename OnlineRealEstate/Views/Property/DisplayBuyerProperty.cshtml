@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OnlineRealEstate.Models.BuyerPropertyModel>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            text-align: left;
+            font-family: Arial;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        tr:hover {
+            background-color: beige;
+        }
+    </style>
+    <title>DisplayPropertyDetails</title>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+        <div>
+            <table>
+                <tr>
+                    <th>Property Type</th>
+                    <th>Location</th>
+                    <th> Area(in sq.ft)</th>
+                    <th>Price</th>
+                    <th>Property Image</th>
+                    <th>Status</th>
+                </tr>
+                @foreach (OnlineRealEstate.Entity.BuyerProperty item in (List<OnlineRealEstate.Entity.BuyerProperty>)TempData["Property"])
+                {
+                    <tr>
+                        <td>
+                            @item.PropertyType.Type
+
+                        </td>
+                        <td>@item.Location</td>
+                        <td>@item.Area</td>
+                        <td>@item.Price</td>
+                        @{
+                            string image = Convert.ToBase64String(item.Image);
+                            string imageSource = String.Format("data:image/gif;base64,{0}", image);
+                        }
+                        <td> <img src='@imageSource' style="width:300px; height:300px;" /></td>
+                        <td>@item.Status</td>
+                        <td>
+                            @Html.ActionLink("Accept", "AcceptProperty", new { id = item.PropertyId })
+                            | @Html.ActionLink("Reject", "RejectProperty", new { id = item.PropertyId })
+                        </td>
+                    </tr>
+                            }
+            </table>
+        </div>
+                            }
+    </body>
+
+</html>

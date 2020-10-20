@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyerProperty.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="PropertyFeature.cs" />
     <Compile Include="PropertyType.cs" />

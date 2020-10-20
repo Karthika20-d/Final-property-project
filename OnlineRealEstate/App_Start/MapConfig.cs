@@ -9,6 +9,7 @@ namespace OnlineRealEstate
             AutoMapper.Mapper.Initialize(config =>
             {
                 config.CreateMap<PropertyModel, Property>();
+                config.CreateMap<BuyerPropertyModel, BuyerProperty>();
                 config.CreateMap<Property, PropertyModel>();
                 config.CreateMap<PropertyFeatureModel, PropertyValues>();
                 config.CreateMap<PropertyValues, PropertyFeatureModel>();

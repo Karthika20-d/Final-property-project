@@ -124,10 +124,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\PropertyFeatureController.cs" />
+    <Compile Include="Controllers\BuyerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\MapConfig.cs" />
+    <Compile Include="Models\BuyerPropertyModel.cs" />
     <Compile Include="Models\EditModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PropertyFeatureModel.cs" />
@@ -151,7 +153,11 @@
     <Content Include="Views\Home\DisplayByLocation.cshtml" />
     <Content Include="Views\PropertyFeature\AddFeature.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
-    <Content Include="Views\Account\DisplayBuyerPropertyDetails.cshtml" />
+    <Content Include="Views\User\DisplaySellerPropertyDetails.cshtml" />
+    <Content Include="Views\Buyer\DisplayBuyerPropertyDetails.cshtml" />
+    <Content Include="Views\Buyer\Create.cshtml" />
+    <Content Include="Views\Property\DisplayBuyerProperty.cshtml" />
+    <Content Include="Views\Buyer\PropertyStatus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -162,7 +168,6 @@
   <ItemGroup>
     <Folder Include="App_Data\Images\" />
     <Folder Include="Views\Error\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineRealEstate.BL\OnlineRealEstate.BL.csproj">

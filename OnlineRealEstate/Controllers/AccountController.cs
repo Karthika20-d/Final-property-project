@@ -32,6 +32,7 @@ namespace OnlineRealEstate.Controllers
                 if (userBL.SignUp(user) > 0)
                 {
                     ViewBag.Message = "Register successfull";
+                    return RedirectToAction("Login");
                 }
             }
             return View();
@@ -79,7 +80,8 @@ namespace OnlineRealEstate.Controllers
                         TempData["Property"] = property;
                         TempData["PropertyFeature"] = propertyFeatures;
                         TempData["PropertyValue"] = propertyValues;
-                        return RedirectToAction("DisplayBuyerPropertyDetails");
+                        TempData["UserId"] = user.UserId;
+                        return RedirectToAction("DisplayBuyerPropertyDetails","Buyer");
                     }
                     else
                     {
@@ -100,8 +102,6 @@ namespace OnlineRealEstate.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Search", "Home");
         }
-        public ActionResult DisplayBuyerPropertyDetails()
-        {
-            return View();        }
+       
     }
 }

@@ -20,6 +20,7 @@ namespace OnlineRealEstate.DAL
         public DbSet<PropertyType> PropertyType { get; set; }
         public DbSet<PropertyFeature> PropertyFeatures { get; set; }
         public DbSet<PropertyValues> PropertyValues { get; set; }
+        public DbSet<BuyerProperty> BuyerProperty { get; set; }
         
     }
 }

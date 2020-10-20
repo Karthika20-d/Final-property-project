@@ -77,25 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202008211253268_k-v1.cs" />
-    <Compile Include="Migrations\202008211253268_k-v1.designer.cs">
-      <DependentUpon>202008211253268_k-v1.cs</DependentUpon>
+    <Compile Include="Migrations\202010181225290_b-v1.cs" />
+    <Compile Include="Migrations\202010181225290_b-v1.designer.cs">
+      <DependentUpon>202010181225290_b-v1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008211323521_d-v1.cs" />
-    <Compile Include="Migrations\202008211323521_d-v1.designer.cs">
-      <DependentUpon>202008211323521_d-v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008211355277_t-v1.cs" />
-    <Compile Include="Migrations\202008211355277_t-v1.designer.cs">
-      <DependentUpon>202008211355277_t-v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008220254346_a.cs" />
-    <Compile Include="Migrations\202008220254346_a.designer.cs">
-      <DependentUpon>202008220254346_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008240233520_user-v1.cs" />
-    <Compile Include="Migrations\202008240233520_user-v1.designer.cs">
-      <DependentUpon>202008240233520_user-v1.cs</DependentUpon>
+    <Compile Include="Migrations\202010181227324_buyer-v1.cs" />
+    <Compile Include="Migrations\202010181227324_buyer-v1.designer.cs">
+      <DependentUpon>202010181227324_buyer-v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PropertyContext.cs" />
@@ -114,20 +102,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008211253268_k-v1.resx">
-      <DependentUpon>202008211253268_k-v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010181225290_b-v1.resx">
+      <DependentUpon>202010181225290_b-v1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008211323521_d-v1.resx">
-      <DependentUpon>202008211323521_d-v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008211355277_t-v1.resx">
-      <DependentUpon>202008211355277_t-v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008220254346_a.resx">
-      <DependentUpon>202008220254346_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008240233520_user-v1.resx">
-      <DependentUpon>202008240233520_user-v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010181227324_buyer-v1.resx">
+      <DependentUpon>202010181227324_buyer-v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
